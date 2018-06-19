@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+
+<!--
+/**
+ * Smartlook integration plugin.
+ *
+ * @category  Extension
+ * @package   Smartlook
+ * @author    Smartsupp <vladimir@smartsupp.com>
+ * @copyright 2018 Smartsupp.com
+ * @license   http://opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link      http://www.smartsupp.com
+ *
+ * Plugin Name:       Smartlook
+ * Plugin URI:        http://www.getsmartlook.com
+ * Description:       Adds Smartlook code to Magento 2.x
+ * Version:           2.0.0
+ * Author:            Smartsupp
+ * Author URI:        http://www.smartsupp.com
+ * Text Domain:       smartsupp
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ */
+ -->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <title>Smartlook</title>
+        <css src="Smartsupp_Smartlook::css/bootstrap.min.css"/>
+        <css src="Smartsupp_Smartlook::css/smartlook.css"/>
+        <link src="Smartsupp_Smartlook::js/smartlook.js"/>        
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Smartsupp\Smartlook\Block\Adminhtml\SmartlookBlock" name="smartlook.settings" template="Smartsupp_Smartlook::settings.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

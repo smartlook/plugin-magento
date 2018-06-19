@@ -1,0 +1,265 @@
+<!--
+/**
+ * Smartlook integration plugin.
+ *
+ * @category  Extension
+ * @package   Smartlook
+ * @author    Smartsupp <vladimir@smartsupp.com>
+ * @copyright 2018 Smartsupp.com
+ * @license   http://opensource.org/licenses/gpl-license.php GPL-2.0+
+ * @link      http://www.smartsupp.com
+ *
+ * Plugin Name:       Smartlook
+ * Plugin URI:        http://www.getsmartlook.com
+ * Description:       Adds Smartlook code to Magento 2.x
+ * Version:           2.0.0
+ * Author:            Smartsupp
+ * Author URI:        http://www.smartsupp.com
+ * Text Domain:       smartsupp
+ * License:           GPL-2.0+
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ */
+ -->
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700&amp;subset=latin,latin-ext" rel="stylesheet" type="text/css">
+<div id="content">
+	<div class="wrap">
+		<?php if ($this->getEnabled()) { ?>
+			<main role="main">
+				<div id="third">
+					<div class="main-bg">
+						<section class="top-bar">
+							<div class="text-center">
+							</div>
+						</section>
+						<section>
+							<div class="row">
+								<p class="text-gray">
+									<span class="left">
+										<img src="<?php echo $this->getViewFileUrl('Smartsupp_Smartlook::img/logo.png'); ?>" alt="smartlook logo" />
+									</span>
+									<span class="right">
+										<br>
+										<?= isset($email) ? $email : '' ?> | <a class="js-action-disable" href="javascript: void(0);"><?= __('Disconnect account', $this->getDomain()) ?></a>
+									</span>
+								</p>
+								<div class="clear"></div>
+								<section class="intro">
+									<h1 class="lead"><?= __('Have you got your popcorn ready?', $this->getDomain()) ?></h1>
+									<h4 class="text-gray"><?= __('Go to Smartlook to see and filter visitor recordings.', $this->getDomain()) ?></h4>
+									<?php if ($this->getProject()): ?>
+										<div class="intro--btn">
+											<a href="https://www.smartlook.com/app/dashboard?utm_source=Wordpress&utm_medium=integration&utm_campaign=link" target="_blank" class="js-register btn btn-primary btn-xl">
+												<?= __('Go to Smartlook', $this->getDomain()) ?>
+											</a>
+										</div>
+										<p class="tiny text-center text-gray bigger-m"><?= __('(This will open a new browser tab)', $this->getDomain()) ?></p>
+									<?php endif; ?>
+
+									<div class="spacer"></div>
+									<div class="spacer"></div>
+
+									<?php if ($this->getDisplayForm()): ?>
+										<form class="form-centered js-project-form">
+											<div class="row">
+												<div class="col-sm-4 text-right">
+													<label for="project"><?= __('Choose project', $this->getDomain()) ?></label>
+												</div>
+												<div class="col-sm-4">
+													<select id="project" name="project" class="form-control js-project-select">
+														<option value=""><?= __('Create new project', $this->getDomain()) ?></option>
+														<?php $selected = FALSE; ?>
+														<?php foreach ($projects as $p): ?>
+															<option<?php if ($project && $project == $p['id']): ?> selected<?php $selected = TRUE; endif; ?> value="<?= $p['id'] ?>"><?= $p['name'] ?></option>
+														<?php endforeach; ?>
+													</select>
+												</div>
+												<div class="col-sm-4"></div>
+											</div>
+											<div class="row js-new-project"<?php if ($selected): ?> style="display: none;"<?php endif; ?>>
+												<div class="col-sm-4 text-right">
+													<label for="projectName"><?= __('Name for new project', $this->getDomain()) ?></label>
+												</div>
+												<div class="col-sm-4">
+													<input type="text" id="projectName" name="projectName" class="form-control">
+												</div>
+												<div class="col-sm-4"></div>
+											</div>
+											<div class="row">
+												<div class="col-sm-4"></div>
+												<div class="col-sm-4">
+													<button type="submit" class="btn btn-default"><?= __('Assign project to this web', $this->getDomain()) ?></button>
+												</div>
+												<div class="col-sm-4"></div>
+											</div>
+											<div class="loader"></div>
+										</form>
+									<?php endif; ?>
+								</section>
+							</div>
+						</section>
+					</div>
+				</div>
+			</main>
+		<?php } else { ?>
+			<main role="main" class="sections" id="home"<?php if ($this->getFormAction()) { ?> style="display: none;"<?php } ?>>
+				<div id="first">
+					<div class="main-bg with-guy">
+						<section class="top-bar">
+							<img src="<?php echo $this->getViewFileUrl('Smartsupp_Smartlook::img/logo.png'); ?>" alt="smartlook logo" />
+							<a href="javascript: void(0);" class="js-login btn btn-default"><?= __('Connect existing account', $this->getDomain()) ?></a>
+						</section>
+						<section class="intro">
+							<div>
+								<h1 class="lead">
+									<?= __('We will record everything visitors do.<br>On every website. For free.', $this->getDomain()) ?>
+								</h1>
+								<h3><?= __('Look at your website through your customer\'s eyes!', $this->getDomain()) ?></h3>
+
+								<div class="alerts row">
+									<?php if ($this->getMessage()) { ?>
+										<div class="col-sm-4"></div>
+										<div class="col-sm-4">
+											<div class="alert alert-danger js-clear">
+												<?= __($this->getMessage(), $this->getDomain()) ?>
+											</div>
+										</div>
+										<div class="col-sm-4"></div>
+									<?php } ?>
+								</div>
+
+								<form class="form-centered js-register-form">
+									<div class="row">
+										<div class="col-sm-4 text-right">
+											<label for="email"><?= __('Email', $this->getDomain()) ?></label>
+										</div>
+										<div class="col-sm-4">
+											<input id="email" type="email" name="email" class="form-control">
+										</div>
+										<div class="col-sm-4"></div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4 text-right">
+											<label for="password"><?= __('Password', $this->getDomain()) ?></label>
+										</div>
+										<div class="col-sm-4">
+											<input id="password" type="password" name="password" class="form-control">
+										</div>
+										<div class="col-sm-4"></div>
+									</div>
+									<div class="row">
+										<div class="col-sm-4"></div>
+										<div class="col-sm-4">
+											<input type="submit" class="btn btn-primary btn-xl" value="<?= __('Create new account', $this->getDomain()) ?>">
+										</div>
+										<div class="col-sm-4"></div>
+									</div>
+									<div class="loader"></div>
+								</form>
+							</div>
+						</section>
+					</div>
+					<section>
+						<div class="text-center">
+							<div class="section--header">
+								<h2><?= __('We\'ll record all visitor movement on your website', $this->getDomain()) ?></h2>
+							</div>
+							<div class="section--body">
+								<div class="row big-gray">
+									<?= __('Smartlook is a simple tool which records the screens of real users on your website.<br>You can see what visitors clicked with their mouse, what they filled into a form field,<br>where they spend most of their time, and how they browse through each page.', $this->getDomain()) ?>
+								</div>
+								<div class="row big-gray">
+									<?= __('See all features on <a target="_blank" href="https://www.smartlook.com/?utm_source=Wordpress&utm_medium=integration&utm_campaign=link">our website</a>.', $this->getDomain()) ?>
+								</div>
+							</div>
+							<div>
+								<img src="<?php echo $this->getViewFileUrl('Smartsupp_Smartlook::img/screen.png'); ?>">
+							</div>
+							<div class="section--header">
+								<h2><?= __('More than 80 000 happy customers', $this->getDomain()) ?></h2>
+							</div>
+							<div class="section--body">
+								<div class="customers">
+									<img src="<?php echo $this->getViewFileUrl('Smartsupp_Smartlook::img/logo-hyundai.png'); ?>" alt="Hyundai" />
+									<img src="<?php echo $this->getViewFileUrl('Smartsupp_Smartlook::img/logo-kiwi.png'); ?>" alt="Kiwi.com" />
+									<img src="<?php echo $this->getViewFileUrl('Smartsupp_Smartlook::img/logo-conrad.png'); ?>" alt="Conrad" />
+								</div>
+							</div>
+						</div>
+					</section>
+				</div>
+			</main>
+			<main role="main" class="sections" id="connect"<?php if (!$this->getFormAction()) { ?> style="display: none;"<?php } ?>>
+				<div id="second">
+					<div class="main-bg">
+						<section class="top-bar">
+							<div>
+								<a href="javascript: void(0);" class="js-close-form">
+									<img src="<?php echo $this->getViewFileUrl('Smartsupp_Smartlook::img/logo.png'); ?>" alt="smartlook logo" />
+									<a href="javascript: void(0);" class="js-close-form btn btn-default"><?= __('Create free account', $this->getDomain()) ?></a>
+								</a>
+							</div>
+						</section>
+						<section id="signUp">
+							<div class="text-center">
+								<div>
+									<div class="section--header">
+										<h1 class="lead">
+											<?= __('Connect existing account', $this->getDomain()) ?>
+										</h1>
+									</div>
+									<div class="section--body">
+										<div class="form--inner">
+											<div class="alerts row">
+												<?php if ($this->getMessage()) { ?>
+													<div class="col-sm-4"></div>
+													<div class="col-sm-4">
+														<div class="alert alert-danger js-clear">
+															<?= __($this->getMessage(), $this->getDomain()) ?>
+														</div>
+													</div>
+													<div class="col-sm-4"></div>
+												<?php } ?>
+											</div>
+											<form class="form-centered js-login-form">
+												<div class="row">
+													<div class="col-sm-4 text-right">
+														<label for="email"><?= __('Email', $this->getDomain()) ?></label>
+													</div>
+													<div class="col-sm-4">
+														<input id="email" type="email" name="email" class="form-control">
+													</div>
+													<div class="col-sm-4"></div>
+												</div>
+												<div class="row">
+													<div class="col-sm-4 text-right">
+														<label for="password"><?= __('Password', $this->getDomain()) ?></label>
+													</div>
+													<div class="col-sm-4">
+														<input id="password" type="password" name="password" class="form-control">
+													</div>
+													<div class="col-sm-4"></div>
+												</div>
+												<div class="row">
+													<div class="col-sm-4"></div>
+													<div class="col-sm-4">
+														<input type="submit" class="btn btn-primary btn-xl" value="<?= __('Connect existing account', $this->getDomain()) ?>">
+													</div>
+													<div class="col-sm-4"></div>
+												</div>
+												<div class="spaced-row">
+													<a target="_blank" href="https://www.smartlook.com/app/sign/password-reset?utm_source=Wordpress&utm_medium=integration&utm_campaign=link"><?= __('I forgot my password', $this->getDomain()) ?></a>
+												</div>
+												<div class="loader"></div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+						</section>
+					</div>
+				</div>
+			</main>
+		<?php } ?>
+	</div>
+</div>

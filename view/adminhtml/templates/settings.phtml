@@ -40,7 +40,7 @@
 									</span>
 									<span class="right">
 										<br>
-										<?= isset($email) ? $email : '' ?> | <a class="js-action-disable" href="javascript: void(0);"><?= __('Disconnect account', $this->getDomain()) ?></a>
+										<?= $this->getEmail() ?: '' ?> | <a class="js-action-disable" href="javascript: void(0);"><?= __('Disconnect account', $this->getDomain()) ?></a>
 									</span>
 								</p>
 								<div class="clear"></div>

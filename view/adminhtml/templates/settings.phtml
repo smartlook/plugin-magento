@@ -68,10 +68,10 @@
 												<div class="col-sm-4">
 													<select id="project" name="project" class="form-control js-project-select">
 														<option value=""><?= __('Create new project', $this->getDomain()) ?></option>
-														<?php $selected = FALSE; ?>
-														<?php foreach ($projects as $p): ?>
-															<option<?php if ($project && $project == $p['id']): ?> selected<?php $selected = TRUE; endif; ?> value="<?= $p['id'] ?>"><?= $p['name'] ?></option>
-														<?php endforeach; ?>
+														<?php $selected = false; ?>
+														<?php foreach ($this->getProjects() as $p) { ?>
+															<option<?php if ($this->getProject() && $this->getProject() == $p['id']): ?> selected<?php $selected = TRUE; endif; ?> value="<?=$p['id'] ?>"><?=$p['name'] ?></option>
+														<?php } ?>
 													</select>
 												</div>
 												<div class="col-sm-4"></div>

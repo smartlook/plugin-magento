@@ -25,6 +25,7 @@ namespace Smartsupp\Smartlook\Controller\Adminhtml\Settings;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
+use Magento\Framework\Message\ManagerInterface;
 use Smartsupp\Smartlook\Auth\Client;
 
 /**
@@ -41,19 +42,30 @@ class Index extends \Magento\Backend\App\Action
     const DOMAIN = 'smartlook';
     const AUTH_KEY = '47a2435f1f3673ffce7385bc57bbe3e7353ab02e';
     const CONFIG_PATH = __DIR__ . '/../../../etc/config.json';
-    
+
+    const MSG_CACHE = 'Changes do not apply to Smartlook plugin? Refresh Magento cache.';
+
+    /**
+     * @var PageFactory
+     */
     protected $resultPageFactory;
-    
+
+    /**
+     * @var ManagerInterface
+     */
+    protected $messageManager;
+
     /**
      * Constructor
      * 
      * @param Context     $context           context
      * @param PageFactory $resultPageFactory page factory
      */
-    public function __construct(Context $context, PageFactory $resultPageFactory)
+    public function __construct(Context $context, PageFactory $resultPageFactory, ManagerInterface $messageManager)
     {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
+        $this->managerInterface = $messageManager;
     }
 
     /**
@@ -82,6 +94,8 @@ class Index extends \Magento\Backend\App\Action
                     'projectId' => null,
                     )
                 );
+
+                $this->messageManager->addNotice(self::MSG_CACHE);
                 break;
             case 'login':
             case 'register':
@@ -114,6 +128,8 @@ class Index extends \Magento\Backend\App\Action
                         'projectId' => $projectId,
                         )
                     );
+
+                    $this->messageManager->addNotice(self::MSG_CACHE);
                 } else {
                     $message = $result['error'];
                     $formAction = $slaction === 'register' ? null : 'login';

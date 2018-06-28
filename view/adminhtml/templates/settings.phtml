@@ -47,6 +47,19 @@
 								<section class="intro">
 									<h1 class="lead"><?= __('Have you got your popcorn ready?', $this->getDomain()) ?></h1>
 									<h4 class="text-gray"><?= __('Go to Smartlook to see and filter visitor recordings.', $this->getDomain()) ?></h4>
+
+                                    <div class="alerts row">
+                                        <?php if ($this->getMessage()) { ?>
+                                            <div class="col-sm-4"></div>
+                                            <div class="col-sm-4">
+                                                <div class="alert alert-info js-clear">
+                                                    <?= __($this->getMessage(), $this->getDomain()) ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-4"></div>
+                                        <?php } ?>
+                                    </div>
+
 									<?php if ($this->getProject()): ?>
 										<div class="intro--btn">
 											<a href="https://www.smartlook.com/app/dashboard?utm_source=Wordpress&utm_medium=integration&utm_campaign=link" target="_blank" class="js-register btn btn-primary btn-xl">

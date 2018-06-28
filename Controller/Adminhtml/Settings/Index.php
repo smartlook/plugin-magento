@@ -43,7 +43,10 @@ class Index extends \Magento\Backend\App\Action
     const AUTH_KEY = '47a2435f1f3673ffce7385bc57bbe3e7353ab02e';
     const CONFIG_PATH = __DIR__ . '/../../../etc/config.json';
 
-    const MSG_CACHE = 'Changes do not apply to Smartlook plugin? Refresh Magento cache.';
+    const MSG_CACHE = 'Changes do not apply to Smartlook plugin? Refresh Magento cache.',
+        MSG_CACHE_ID = 'cache_refresh',
+        MSG_CACHE_GLOBAL = true; // show permanent message about cache refresh in plugin?
+
 
     /**
      * @var PageFactory
@@ -82,7 +85,11 @@ class Index extends \Magento\Backend\App\Action
         $email = $this->getRequest()->getParam('email');
         $password = $this->getRequest()->getParam('password');
         $project = $this->getRequest()->getParam('project');
-                
+
+        if (self::MSG_CACHE_GLOBAL) {
+            $this->messageManager->addNotice(self::MSG_CACHE);
+        }
+
         if (isset($slaction)) {
             switch ($slaction) {
             case 'disable':
@@ -94,8 +101,7 @@ class Index extends \Magento\Backend\App\Action
                     'projectId' => null,
                     )
                 );
-
-                $this->messageManager->addNotice(self::MSG_CACHE);
+                $message = self::MSG_CACHE_ID;
                 break;
             case 'login':
             case 'register':
@@ -128,8 +134,7 @@ class Index extends \Magento\Backend\App\Action
                         'projectId' => $projectId,
                         )
                     );
-
-                    $this->messageManager->addNotice(self::MSG_CACHE);
+                    $message = self::MSG_CACHE_ID;
                 } else {
                     $message = $result['error'];
                     $formAction = $slaction === 'register' ? null : 'login';
@@ -185,6 +190,7 @@ class Index extends \Magento\Backend\App\Action
                 'not_found' => $formAction ? 'Email not found.' : 'Email already registered.',
                 'sign:invalid_password' => 'Invalid password.',
                 'sign:login_failure' => 'Login failed, please try again.',
+                self::MSG_CACHE_ID => self::MSG_CACHE,
             );
             if (isset($mapping[$message])) {
                 $message = $mapping[$message];

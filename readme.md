@@ -1,6 +1,6 @@
-# Smartlook plugin - Magento 2.0
+# Smartlook plugin - Magento 2
 
-Official implementation of Smartlook into Magento 2.0+.
+Official implementation of Smartlook into Magento 2.
 
 Install via Composer `composer require smartlook/plugin-magento`
 

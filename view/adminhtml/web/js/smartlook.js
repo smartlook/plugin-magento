@@ -13,6 +13,7 @@ require(
                     $('#home').hide();
                     $('#connect').show();
                     $('.js-clear').hide();
+                    showGdpr(type == 'register');
                 }
 
                 function closeForm()
@@ -37,6 +38,19 @@ require(
                             $(this).text($(this).data(type));
                         }
                     )
+                }
+
+                function showGdpr(show) {
+                    var $gdprContainer = $('.gdpr.checkbox');
+                    var $checkbox = $gdprContainer.find('input');
+
+                    if (show) {
+                        $gdprContainer.show();
+                        $checkbox.prop('disabled', false);
+                    } else {
+                        $gdprContainer.hide();
+                        $checkbox.prop('disabled', true);
+                    }
                 }
 
                 function decodeQueryString(query)
@@ -107,6 +121,7 @@ require(
                             function () {
                                 $loader.hide();
                                 $button.show();
+                                showGdpr(false);
                             }
                         );
                     }
@@ -122,11 +137,13 @@ require(
                             getLink('register') + ' #content',
                             {
                                 email: $registerForm.find('input[name="email"]').val(),
-                                password: $registerForm.find('input[name="password"]').val()
+                                password: $registerForm.find('input[name="password"]').val(),
+                                termsConsent: $registerForm.find('input[name="termsConsent"]').val()
                             },
                             function () {
                                 $loader.hide();
                                 $button.show();
+                                showGdpr(true);
                             }
                         );
                     }

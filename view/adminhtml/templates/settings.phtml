@@ -147,7 +147,7 @@
 											<label for="email"><?= __('Email', $this->getDomain()) ?></label>
 										</div>
 										<div class="col-sm-4">
-											<input id="email" type="email" name="email" class="form-control">
+											<input id="email" type="email" name="email" class="form-control" required="" value="<?= $this->getEmail() ?: '' ?>">
 										</div>
 										<div class="col-sm-4"></div>
 									</div>
@@ -156,10 +156,19 @@
 											<label for="password"><?= __('Password', $this->getDomain()) ?></label>
 										</div>
 										<div class="col-sm-4">
-											<input id="password" type="password" name="password" class="form-control">
+											<input id="password" type="password" name="password" class="form-control" required="">
 										</div>
 										<div class="col-sm-4"></div>
 									</div>
+                                    <div class="row gdpr checkbox">
+                                        <div class="col-sm-4"></div>
+                                        <div class="col-sm-4">
+                                            <label for="frm-signUp-form-termsConsent">
+                                                <input <?= !empty($this->getTermsConsent()) ? 'checked="checked"' : '' ?> value="1" type="checkbox" name="termsConsent" id="frm-signUp-form-termsConsent" required="">&nbsp;<?= __('I have read and agree with <a href="https://www.smartlook.com/terms" target="_blank">Terms</a>', $this->getDomain()); ?>
+                                            </label>
+                                        </div>
+                                        <div class="col-sm-4"></div>
+                                    </div>
 									<div class="row">
 										<div class="col-sm-4"></div>
 										<div class="col-sm-4">
@@ -240,7 +249,7 @@
 														<label for="email"><?= __('Email', $this->getDomain()) ?></label>
 													</div>
 													<div class="col-sm-4">
-														<input id="email" type="email" name="email" class="form-control">
+														<input id="email" type="email" name="email" class="form-control" required="" value="<?= $this->getEmail() ?: '' ?>">
 													</div>
 													<div class="col-sm-4"></div>
 												</div>
@@ -249,7 +258,7 @@
 														<label for="password"><?= __('Password', $this->getDomain()) ?></label>
 													</div>
 													<div class="col-sm-4">
-														<input id="password" type="password" name="password" class="form-control">
+														<input id="password" type="password" name="password" class="form-control" required="">
 													</div>
 													<div class="col-sm-4"></div>
 												</div>

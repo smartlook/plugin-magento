@@ -85,6 +85,7 @@ class Index extends \Magento\Backend\App\Action
         $email = $this->getRequest()->getParam('email');
         $password = $this->getRequest()->getParam('password');
         $project = $this->getRequest()->getParam('project');
+        $termsConsent = $this->getRequest()->getParam('termsConsent');
 
         if (self::MSG_CACHE_GLOBAL) {
             $this->messageManager->addNotice(self::MSG_CACHE);
@@ -107,7 +108,7 @@ class Index extends \Magento\Backend\App\Action
             case 'register':
                 $api = new Client;
                 $result = $slaction === 'register' ?
-                $api->signUp(array('authKey' => self::AUTH_KEY, 'email' => $email, 'password' => $password, 'lang' => $this->_convertLocale($this->getLocale()),)) :
+                $api->signUp(array('authKey' => self::AUTH_KEY, 'email' => $email, 'password' => $password, 'lang' => $this->_convertLocale($this->getLocale()), 'consentTerms' => 1)) :
                 $api->signIn(array('authKey' => self::AUTH_KEY, 'email' => $email, 'password' => $password,));
 
                 if ($result['ok']) {
@@ -205,11 +206,12 @@ class Index extends \Magento\Backend\App\Action
             $block->setDomain(self::DOMAIN);
             $block->setOptions($this->_getOptions());
             $block->setMessage((string) $message);
-            $block->setEmail($this->_getOption('email', null));
-            $block->setEnabled((bool) $block->getEmail());
+            $block->setEmail($email ?: $this->_getOption('email'));
+            $block->setEnabled((bool) $this->_getOption('email', null));
             $block->setProjects($projects);
             $block->setProject($project);
             $block->setDisplayForm(!$project);
+            $block->setTermsConsent($termsConsent);
         }
         return $resultPage;
     }

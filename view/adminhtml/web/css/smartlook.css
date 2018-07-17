@@ -327,6 +327,14 @@ section {
     font-size: 12px;
 }
 
+form.js-register-form div.checkbox.gdpr {
+    text-align: left;
+}
+
+form.js-register-form div.checkbox.gdpr input {
+    margin-left: -12px;
+}
+
 .bold {
     font-weight: bold;
 }

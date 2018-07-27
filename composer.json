@@ -2,7 +2,7 @@
   "name": "smartlook/plugin-magento",
   "description": "Look at your website through your customer's eyes! We will record everything visitors do on your site.",
   "type": "magento2-module",
-  "version": "1.0",
+  "version": "2.0.2",
   "license": [
     "OSL-3.0"
   ],

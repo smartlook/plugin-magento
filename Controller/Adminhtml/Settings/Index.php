@@ -25,7 +25,6 @@ namespace Smartsupp\Smartlook\Controller\Adminhtml\Settings;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
-use Magento\Framework\Message\ManagerInterface;
 use Smartsupp\Smartlook\Auth\Client;
 
 /**
@@ -54,21 +53,15 @@ class Index extends \Magento\Backend\App\Action
     protected $resultPageFactory;
 
     /**
-     * @var ManagerInterface
-     */
-    protected $messageManager;
-
-    /**
      * Constructor
      * 
      * @param Context     $context           context
      * @param PageFactory $resultPageFactory page factory
      */
-    public function __construct(Context $context, PageFactory $resultPageFactory, ManagerInterface $messageManager)
+    public function __construct(Context $context, PageFactory $resultPageFactory)
     {
         parent::__construct($context);
         $this->resultPageFactory = $resultPageFactory;
-        $this->managerInterface = $messageManager;
     }
 
     /**

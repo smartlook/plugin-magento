@@ -40,7 +40,7 @@ class Index extends \Magento\Backend\App\Action
 {
     const DOMAIN = 'smartlook';
     const AUTH_KEY = '47a2435f1f3673ffce7385bc57bbe3e7353ab02e';
-    const CONFIG_PATH = __DIR__ . '/../../../etc/config.json';
+    const CONFIG_PATH = '/../../../etc/config.json';
 
     const MSG_CACHE = 'Changes do not apply to Smartlook plugin? Refresh Magento cache.',
         MSG_CACHE_ID = 'cache_refresh',
@@ -243,7 +243,7 @@ class Index extends \Magento\Backend\App\Action
         foreach ($options as $key => $option) {
             $current[$key] = $option;
         }
-        file_put_contents(self::CONFIG_PATH, json_encode($current));
+        file_put_contents(__DIR__ . self::CONFIG_PATH, json_encode($current));
     }
 
     /**
@@ -253,7 +253,7 @@ class Index extends \Magento\Backend\App\Action
      */
     private function _getOptions()
     {
-        $config = @file_get_contents(self::CONFIG_PATH);
+        $config = @file_get_contents(__DIR__ . self::CONFIG_PATH);
         if (!$config) {
             $config = array();
         } else {

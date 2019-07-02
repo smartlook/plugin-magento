@@ -279,11 +279,6 @@ section {
     border-bottom: 1px solid #ddd
 }
 
-.main-bg.with-guy {
-    background: #fbfbfb url('../img/guy.png') right bottom no-repeat;
-    background-size: 40%;
-}
-
 #first, #second, #third {
     padding: 0 50px;
 }

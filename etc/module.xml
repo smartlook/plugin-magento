@@ -14,7 +14,7 @@
  * Plugin Name:       Smartlook
  * Plugin URI:        http://www.getsmartlook.com
  * Description:       Adds Smartlook code to Magento 2.x
- * Version:           2.0.0
+ * Version:           2.0.3
  * Author:            Smartsupp
  * Author URI:        http://www.smartsupp.com
  * Text Domain:       smartsupp
@@ -24,5 +24,5 @@
  -->
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-	<module name="Smartsupp_Smartlook" setup_version="2.0.0"/>
+	<module name="Smartsupp_Smartlook" setup_version="2.0.3"/>
 </config>

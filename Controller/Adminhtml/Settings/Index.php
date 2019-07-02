@@ -6,12 +6,12 @@
  * @category  Extension
  * @package   Smartlook
  * @author    Smartsupp <vladimir@smartsupp.com>
- * @copyright 2018 Smartsupp.com
+ * @copyright 2018 - 2019 Smartsupp.com
  * @license   http://opensource.org/licenses/gpl-license.php GPL-2.0+
  * @link      http://www.smartsupp.com
  *
  * Plugin Name:       Smartlook
- * Plugin URI:        http://www.getsmartlook.com
+ * Plugin URI:        https://www.smartlook.com
  * Description:       Adds Smartlook code to Magento 2.x
  * Version:           2.0.3
  * Author:            Smartsupp
@@ -54,7 +54,7 @@ class Index extends \Magento\Backend\App\Action
 
     /**
      * Constructor
-     * 
+     *
      * @param Context     $context           context
      * @param PageFactory $resultPageFactory page factory
      */
@@ -73,7 +73,7 @@ class Index extends \Magento\Backend\App\Action
     {
         $message = null;
         $formAction = null;
-                
+
         $slaction = $this->getRequest()->getParam('slaction');
         $email = $this->getRequest()->getParam('email');
         $password = $this->getRequest()->getParam('password');
@@ -192,7 +192,7 @@ class Index extends \Magento\Backend\App\Action
                 $message = ''; // better fail silently than display unknown message from API
             }
         }
-        
+
         $resultPage = $this->resultPageFactory->create();
         $block = $resultPage->getLayout()->getBlock('smartlook.settings');
         if ($block) {
@@ -208,7 +208,7 @@ class Index extends \Magento\Backend\App\Action
         }
         return $resultPage;
     }
-    
+
     /**
      * Get store name
      *
@@ -232,9 +232,9 @@ class Index extends \Magento\Backend\App\Action
 
     /**
      * Update option file
-     * 
+     *
      * @param array $options name-value pairs
-     * 
+     *
      * @return none
      */
     private function _updateOptions(array $options)
@@ -248,7 +248,7 @@ class Index extends \Magento\Backend\App\Action
 
     /**
      * Get options from file
-     * 
+     *
      * @return array
      */
     private function _getOptions()
@@ -264,10 +264,10 @@ class Index extends \Magento\Backend\App\Action
 
     /**
      * Get option from file
-     * 
+     *
      * @param String $name    option name
      * @param String $default default value
-     * 
+     *
      * @return String
      */
     private function _getOption($name, $default = null)
@@ -279,9 +279,9 @@ class Index extends \Magento\Backend\App\Action
 
     /**
      * Convert locale to well-know string
-     * 
+     *
      * @param String $locale locale code
-     * 
+     *
      * @return String
      */
     private function _convertLocale($locale)

@@ -7,12 +7,12 @@
  * @category  Extension
  * @package   Smartlook
  * @author    Smartsupp <vladimir@smartsupp.com>
- * @copyright 2018 Smartsupp.com
+ * @copyright 2018 - 2019 Smartsupp.com
  * @license   http://opensource.org/licenses/gpl-license.php GPL-2.0+
  * @link      http://www.smartsupp.com
  *
  * Plugin Name:       Smartlook
- * Plugin URI:        http://www.getsmartlook.com
+ * Plugin URI:        https://www.smartlook.com
  * Description:       Adds Smartlook code to Magento 2.x
  * Version:           2.0.3
  * Author:            Smartsupp
@@ -28,7 +28,7 @@
         <title>Smartlook</title>
         <css src="Smartsupp_Smartlook::css/bootstrap.min.css"/>
         <css src="Smartsupp_Smartlook::css/smartlook.css"/>
-        <link src="Smartsupp_Smartlook::js/smartlook.js"/>        
+        <link src="Smartsupp_Smartlook::js/smartlook.js"/>
     </head>
     <body>
         <referenceContainer name="content">

@@ -6,12 +6,12 @@
  * @category  Extension
  * @package   Smartlook
  * @author    Smartsupp <vladimir@smartsupp.com>
- * @copyright 2018 Smartsupp.com
+ * @copyright 2018 - 2019 Smartsupp.com
  * @license   http://opensource.org/licenses/gpl-license.php GPL-2.0+
  * @link      http://www.smartsupp.com
  *
  * Plugin Name:       Smartlook
- * Plugin URI:        http://www.getsmartlook.com
+ * Plugin URI:        https://www.smartlook.com
  * Description:       Adds Smartlook code to Magento 2.x
  * Version:           2.0.3
  * Author:            Smartsupp
@@ -37,21 +37,21 @@ class Client
 
     /**
      * API Key
-     * 
+     *
      * @var string
      */
     public $apiKey = null;
 
     /**
      * API Url
-     * 
+     *
      * @var string
      */
     public $apiUrl = 'https://www.smartlook.com/api';
 
     /**
      * Header
-     * 
+     *
      * @var array
      */
     private $_headers = array();
@@ -59,9 +59,9 @@ class Client
 
     /**
      * Constructor
-     * 
+     *
      * @param String $apiKey API-key
-     * 
+     *
      * @return none
      */
     public function __construct($apiKey = null)
@@ -72,9 +72,9 @@ class Client
 
     /**
      * Authenticate method
-     * 
+     *
      * @param String $apiKey API-key
-     * 
+     *
      * @return this
      */
     public function authenticate($apiKey = null)
@@ -86,10 +86,10 @@ class Client
 
     /**
      * Set header
-     * 
+     *
      * @param String $name  name parameter
      * @param String $value name value
-     * 
+     *
      * @return this
      */
     public function setHeader($name, $value)
@@ -105,10 +105,10 @@ class Client
 
     /**
      * Call method via API
-     * 
+     *
      * @param String $method method name
      * @param array  $params method parameters
-     * 
+     *
      * @return array
      */
     public function call($method, array $params = null)
@@ -148,10 +148,10 @@ class Client
 
     /**
      * Call method
-     * 
+     *
      * @param String $name      method name
      * @param array  $arguments method arguments
-     * 
+     *
      * @return array
      */
     public function __call($name, $arguments)
@@ -163,9 +163,9 @@ class Client
 
     /**
      * Format method name
-     * 
+     *
      * @param String $name method name
-     * 
+     *
      * @return String
      */
     public function formatMethod($name)

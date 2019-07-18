@@ -14,4 +14,4 @@ For guidelines please see [Install extensions from the command line](https://dev
 
 ## Copyright
 
-Copyright (c) 2018 [Smartlook.com](https://www.smartlook.com/)
+Copyright (c) 2018 - 2019 [Smartlook.com](https://www.smartlook.com/)
